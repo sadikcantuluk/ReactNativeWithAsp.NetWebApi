@@ -1,0 +1,6 @@
+@ReactNativeWebApi_HostAddress = http://localhost:5285
+
+GET {{ReactNativeWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
