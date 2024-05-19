@@ -1,5 +1,6 @@
 ﻿using ReactNativeWebApi.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ReactNativeWebApi.Entities
 {
@@ -13,6 +14,7 @@ namespace ReactNativeWebApi.Entities
         public decimal Price { get; set; }
         public string Description { get; set; }
         public Guid CategoryId { get; set; }
+        [JsonIgnore]
         public Category Category { get; set; }
     }
 }

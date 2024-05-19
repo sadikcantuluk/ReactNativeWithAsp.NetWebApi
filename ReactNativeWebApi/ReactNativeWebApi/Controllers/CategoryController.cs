@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ReactNativeWebApi.Context;
 using ReactNativeWebApi.Dto.CategoryDto;
 using ReactNativeWebApi.Entities;
@@ -82,6 +83,17 @@ namespace ReactNativeWebApi.Controllers
                 {
                     return Ok();
                 }
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("GetVehiclesByCategoryId{categoryId}")]
+        public IActionResult GetVehiclesByCategoryId(Guid categoryId)
+        {
+            var values = _applicationContextDb.Categories.Include(x => x.Vehiclecs).FirstOrDefault(x => x.Id == categoryId);
+            if (values != null)
+            {
+                return Ok(values);
             }
             return BadRequest();
         }

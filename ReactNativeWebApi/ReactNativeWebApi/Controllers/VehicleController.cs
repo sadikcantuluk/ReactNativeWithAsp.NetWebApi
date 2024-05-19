@@ -18,7 +18,7 @@ namespace ReactNativeWebApi.Controllers
             _applicationContextDb = applicationContextDb;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllVehicle")]
         public IActionResult GetAllVehicle()
         {
             List<Vehiclecs> vehiclecs = _applicationContextDb.Vehiclecs.ToList();
@@ -29,7 +29,7 @@ namespace ReactNativeWebApi.Controllers
             return BadRequest();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetVehicle/{id}")]
         public IActionResult GetVehicle([FromRoute] Guid id)
         {
             Vehiclecs value = _applicationContextDb.Vehiclecs.Find(id);
@@ -40,7 +40,7 @@ namespace ReactNativeWebApi.Controllers
             return BadRequest();
         }
 
-        [HttpPost]
+        [HttpPost("AddVehicle")]
         public IActionResult AddVehicle(ResultVehicleDto resultVehicleDto)
         {
             Vehiclecs vehiclecs = new Vehiclecs()
@@ -57,7 +57,7 @@ namespace ReactNativeWebApi.Controllers
             return Ok();
         }
 
-        [HttpDelete("{vehicleId}")]
+        [HttpDelete("RemoveVehicle/{vehicleId}")]
         public IActionResult RemoveVehicle([FromRoute] Guid vehicleId)
         {
             Vehiclecs value = _applicationContextDb.Vehiclecs.Find(vehicleId);
@@ -72,7 +72,7 @@ namespace ReactNativeWebApi.Controllers
             return BadRequest();
         }
 
-        [HttpPut("{vehicleId}")]
+        [HttpPut("UpdateVehicle/{vehicleId}")]
         public IActionResult UpdateVehicle([FromRoute] Guid vehicleId, ResultVehicleDto resultVehicleDto)
         {
             Vehiclecs value = _applicationContextDb.Vehiclecs.Find(vehicleId);

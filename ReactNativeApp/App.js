@@ -1,11 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native";
+import { Provider } from "react-redux";
+import { store } from "./storage/store";
+import TryScreen from "./src/screens/TryScreen";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>New App</Text>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.container}>
+        <TryScreen />
+      </SafeAreaView>
+    </Provider>
   );
 }
 
