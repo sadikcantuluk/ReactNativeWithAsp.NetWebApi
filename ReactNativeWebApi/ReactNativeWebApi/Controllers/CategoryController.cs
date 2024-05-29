@@ -24,9 +24,20 @@ namespace ReactNativeWebApi.Controllers
         public IActionResult GetAllCategory()
         {
             List<Category> categories = _applicationContextDb.Categories.ToList();
-            if (categories is not null)
+            try
             {
-                return Ok(categories);
+                if (categories is not null)
+                {
+                    // Content-Type başlığını ekle
+                    Response.Headers.Add("Content-Type", "application/json");
+                    return Ok(categories);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Content-Type başlığını ekle
+                Response.Headers.Add("Content-Type", "application/json");
+                return StatusCode(500, new { error = "Internal Server Error", message = ex.Message });
             }
             return BadRequest();
         }
@@ -87,7 +98,7 @@ namespace ReactNativeWebApi.Controllers
             return BadRequest();
         }
 
-        [HttpGet("GetVehiclesByCategoryId{categoryId}")]
+        [HttpGet("GetVehiclesByCategoryId/{categoryId}")]
         public IActionResult GetVehiclesByCategoryId(Guid categoryId)
         {
             var values = _applicationContextDb.Categories.Include(x => x.Vehiclecs).FirstOrDefault(x => x.Id == categoryId);
