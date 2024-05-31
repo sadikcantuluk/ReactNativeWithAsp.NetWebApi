@@ -36,6 +36,5 @@ export default function Vehicle({ route }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
   },
 });

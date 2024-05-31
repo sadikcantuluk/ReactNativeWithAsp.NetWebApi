@@ -13,6 +13,7 @@ namespace ReactNativeWebApi.Entities
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         public string Description { get; set; }
+        public string ImageUrl { get; set; }
         public Guid CategoryId { get; set; }
         [JsonIgnore]
         public Category Category { get; set; }
