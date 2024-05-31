@@ -7,10 +7,11 @@ namespace ReactNativeWebApi.Context
     {
         public ApplicationContextDb(DbContextOptions options) : base(options)
         {
-            
+
         }
 
         public DbSet<Vehiclecs> Vehiclecs { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
